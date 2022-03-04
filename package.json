@@ -6,7 +6,7 @@
   
   "scripts": {
         "start": "node server.js",
-        "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install npm && run build"
+          "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prifix client && npm run build --prifix client"  
     },
     "engines": {
         "node": "10.16.0"
