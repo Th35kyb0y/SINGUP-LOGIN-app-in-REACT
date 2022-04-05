@@ -58,10 +58,10 @@ let port = 5000||process.env.PORT;
 // if we are sending json then bodyparser.json , if sending form data use encodeded
 app.use(bodyParser.json())
 // serve static files from frontend build/static , ( for deploying in heroku)
-app.use( express.static(path.join(__dirname,'/frontend/build')))
+app.use( express.static(path.join(__dirname,'/client/build')))
 // whatever the url , /url , it will redirect to index.html of reactjs
 app.get("/*",(req,res)=>{
-  res.sendFile(path.join(__dirname,"frontend/build","index.html"))
+  res.sendFile(path.join(__dirname,"client/build","index.html"))
 }) 
 
 
