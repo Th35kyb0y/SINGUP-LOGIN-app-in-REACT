@@ -5,11 +5,7 @@ var bodyParser = require('body-parser');
 // jwt for storing token , for auth
 const jwt = require("jsonwebtoken");
 const path = require("path");
-//cookie parser
-const cookieParse=require('cookie-parser');
-const mongoose = require('mongoose');
-// our cloud MongoDb url
-// put express in app variable
+
 const app = express();
 app.use(cookieParse())
 // port number , env for heroku
