@@ -9,7 +9,6 @@ const app = express();
 // port number , env for heroku
 let port = 5000||process.env.PORT;
 // serve static files from frontend build/static , ( for deploying in heroku)
-app.use( express.static(path.join(__dirname,'/client/build')))
 
 
 
