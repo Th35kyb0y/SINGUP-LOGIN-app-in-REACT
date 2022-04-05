@@ -9,46 +9,6 @@ const path = require("path");
 const cookieParse=require('cookie-parser');
 const mongoose = require('mongoose');
 // our cloud MongoDb url
-const db = 'mongodb+srv://th35kyb0y:hustler@cluster0.snw7f.mongodb.net/moodie?retryWrites=true&w=majority';
-// connect db , and returns a promise , using then() , catch if err occurs
-mongoose.connect(db).then(()=>{
-    console.log('connected to db')
-}).catch((err)=>{
-    console.log(err.message,'connection failed')
-})
-// our db collection schema , 
-const User= mongoose.Schema({
-    email:{type:String, required:true , unique:true},
-    password:{type:String, required:true},
-    tokens:[{token:{type:String,
-    required:true}}]
-})
-// schema for mood database collection
-const Mood=mongoose.Schema({
-label:{type:String},
-link:{type:Array}
-})
-
-//defining getAuth and storing it in db and returning token
-// methods stand for instance of User(schema) , just like this stand for current obj
-User.methods.getAuth=async function(){
-    //"this" refers collection here 
-try{
-// genrate token using mongodb doc id , and secret key of yours , that can be any 32char long string
-const token = jwt.sign({_id:this._id.toString()},"myjwtauthenticationrequires32charofsecretkey")
-// storing this token in db
-this.tokens=this.tokens.concat({token});
-// store using save()
-await this.save()
-// now we wll use this token to authenticate this user and fetch data of this token
-// here this refers to current instance of user schema
-return token
-
-}
-catch(err){
-console.log(err)
-}
-}
 // put express in app variable
 const app = express();
 app.use(cookieParse())
