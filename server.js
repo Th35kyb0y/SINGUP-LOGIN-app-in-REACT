@@ -10,7 +10,10 @@ const app = express();
 let port = 5000||process.env.PORT;
 // serve static files from frontend build/static , ( for deploying in heroku)
 
-
+app.get("/", (req, res) =>{
+res.send(" app is working fine without those 
+two line of code") 
+}) 
 
 app.listen(port,()=>{
     console.log("app is listening on" + port + " port")
